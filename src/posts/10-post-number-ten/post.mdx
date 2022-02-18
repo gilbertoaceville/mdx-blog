@@ -1,0 +1,85 @@
+---
+title: Gatsby Tutorial
+slug: gatsby-Tutorial
+image: ./images/gatsby-1.png
+date: 2020-05-27
+author: john smith
+category: gatsby
+readTime: 34
+embeddedImages: 
+  - ./images/gatsby-1.png
+---
+
+import { Link } from 'gatsby'
+import { FiInfo } from 'react-icons/fi'
+import { Counter, LikeButton } from '../../components/Complete'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+
+<!--- (make sure to set up embeddedImages query in post-template (dynamically generated file for mdx -- see gatsby.node.js)) -->
+<!--- Better set up than clashing with gatsby-remark-plugin which generates error (i.e when attached with gatsby-plugin-mdx) -->
+
+<GatsbyImage image={getImage(props.embeddedImages[0])} alt="random stuff" className="first-inline-img" />
+
+## My first mdx file
+
+_Excepteur officia tofu vexillologist semiotics asymmetrical. Labore live-edge aliquip locavore kitsch ullamco nisi. Shabby chic paleo kinfolk lumbersexual polaroid YOLO cardigan. Put a bird on it kitsch meggings, non four dollar toast vexillologist heirloom chia meditation wayfarers banh mi deserunt mlkshk chillwave blue bottle._
+
+Succulents incididunt church-key ea humblebrag. Austin palo santo officia, succulents godard humblebrag gluten-free shaman synth. Letterpress ennui lyft cray migas nostrud mollit ea consequat. Chambray gluten-free skateboard occupy vinyl do ut butcher. Seitan slow-carb enim gentrify duis quis, chia esse.
+
+<div className='code'>
+
+```js
+const firstName = 'john'
+const lastName = 'amby'
+```
+
+</div>
+
+<div className="nice-text">
+
+<h3>nice text</h3>
+
+<FiInfo className="nice-text-icon"></FiInfo>{' '}
+
+I'm baby kogi wayfarers tofu, man bun try-hard shaman freegan pug knausgaard offal swag quinoa before they sold out. Pabst kitsch vice synth cardigan, flannel authentic gentrify tumblr humblebrag truffaut. Kitsch crucifix brooklyn asymmetrical bushwick. Knausgaard sustainable deep v crucifix, lumbersexual fashion axe street art cliche marfa quinoa pitchfork swag locavore cold-pressed banjo. Kickstarter iceland fanny pack plaid, drinking vinegar forage health goth viral ethical kitsch affogato vegan man braid church-key. Live-edge chambray poutine knausgaard, godard taxidermy health goth.
+
+</div>
+
+<h2> React Components </h2>
+
+<Counter />
+
+```jsx
+import React from "react"
+
+import styled from "styled-components"
+import { AiOutlineLike } from "react-icons/ai"
+const LikeButton = () => {
+  const [value, setValue] = React.useState(0)
+  return (
+    <Wrapper>
+      <div>
+        <button onClick={() => setValue(value + 1)}>
+          <AiOutlineLike />
+        </button>
+        <p>
+          Liked the post?
+          <br />
+          Click thumbs up few times
+        </p>
+      </div>
+      <span>+{value}</span>
+    </Wrapper>
+  )
+}
+```
+
+<LikeButton />
+
+//Adding inline image in mdx
+//  //for nesting images or to access or work with images inside mdx files (![alt text](image.jpg)). NOTE: not frontmatter
+![mdx image]('./images/gatsby-1.png')
+
+<Link to="/posts" className="btn center-btn">
+  all posts
+</Link>
